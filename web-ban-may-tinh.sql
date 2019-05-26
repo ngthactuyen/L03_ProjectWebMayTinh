@@ -40,7 +40,7 @@ create table tbl_laptop(
 	url_laptop varchar(100),
 	anh_laptop varchar(100),
 	nhucau int,
-	
+	mota longtext,
 	soluong int,
 	constraint uq_url_laptop unique(url_laptop),
 	constraint fk_laptop_hangsx foreign key (hangsx_id) references tbl_hangsx(id_hangsx)
@@ -57,7 +57,6 @@ create table tbl_camera(
 	url_camera varchar(100),
 	anh_camera varchar(100),
 	loai_camera int,
-	
 	mota longtext,
 	soluong int,
 	constraint uq_url_camera unique(url_camera),

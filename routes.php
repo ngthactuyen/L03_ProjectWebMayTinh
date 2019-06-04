@@ -29,6 +29,11 @@ switch ($controller) {
 		$laptopController->$action();
 		break;
 	
+	case 'camera':
+		$cameraController = new CameraController();
+		$cameraController->$action();
+		break;
+
 	default:
 		echo "Không có controller nào được gọi";
 		break;

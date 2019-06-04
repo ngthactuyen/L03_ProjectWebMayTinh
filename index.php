@@ -10,7 +10,11 @@ require_once 'models/HangSX.php';
 require_once 'models/HangSXSql.php';
 require_once 'controllers/HangSXController.php';
 
-// require 'views/admin/layout/layout.view.php';
+require_once 'models/Camera.php';
+require_once 'models/CameraSql.php';
+require_once 'controllers/CameraController.php';
+
+// require 'views/admin/layout/layout-demo.view.php';
 require_once 'routes.php';
 
 ?>

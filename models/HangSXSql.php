@@ -28,7 +28,20 @@ class HangSXSql
 
 	function getHangSXLaptop()
 	{
-		$sql = "select * from tbl_hangsx where loaisp = 1";
+		$sql = "select * from tbl_hangsx where loaisp = 1 order by tenhangsx";
+		$hangsxList = getAllData($sql);
+		// dd($hangsxList);
+		$hangsxObject = [];
+		foreach ($hangsxList as $hangsx) {
+			$hangsxObject[] = new HangSX($hangsx);
+		}
+		// dd($hangsxObject);
+		return $hangsxObject;
+	}
+
+	function getHangSXCamera()
+	{
+		$sql = "select * from tbl_hangsx where loaisp = 2 order by tenhangsx";
 		$hangsxList = getAllData($sql);
 		// dd($hangsxList);
 		$hangsxObject = [];
@@ -52,12 +65,11 @@ class HangSXSql
 	function updateHangSX($id_hangsx, $loaisp, $tenhangsx, $anh_hangsx){
 		if ($anh_hangsx == '') {
 			$sql = "update tbl_hangsx set loaisp = $loaisp, tenhangsx = '$tenhangsx' where id_hangsx = $id_hangsx";
-			return execute($sql);
 		} else {
 			$sql = "update tbl_hangsx set loaisp = $loaisp, tenhangsx = '$tenhangsx', anh_hangsx = '$anh_hangsx' where id_hangsx = $id_hangsx";
-			return execute($sql);
 		}
 		// return $sql;
+		return execute($sql);
 	}
 }
 

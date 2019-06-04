@@ -1,7 +1,4 @@
 <?php
-/**
- * 
- */
 class HangSX
 {
 	public $id_hangsx;

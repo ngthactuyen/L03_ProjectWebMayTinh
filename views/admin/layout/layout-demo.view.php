@@ -3,7 +3,6 @@
 <head>
 	<title>Quản lý cửa hàng</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/admin/demo.style.css">
-	<script src="ckeditor/ckeditor.js"></script>
 </head>
 <body>
 	<div class="header clear-fix">
@@ -20,3 +19,9 @@
 		</div>
 	</div>
 	<div class="content">
+		<p style="padding: 300px">qeqeqeqeqeqeqeqeqeqeqeqeqe</p>
+		<p style="padding: 300px">qeqeqeqeqeqeqeqeqeqeqeqeqe</p>
+		<p style="padding: 300px">qeqeqeqeqeqeqeqeqeqeqeqeqe</p>
+	</div>
+</body>
+</html>

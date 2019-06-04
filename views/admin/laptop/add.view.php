@@ -49,7 +49,13 @@ viewAdminLayout('head');
 		<tr>
 			<th>RAM:</th>
 			<td>
-				<input type="text" name="txt_ram" placeholder="GB">
+				<input type="text" name="txt_ram" placeholder="">
+			</td>
+		</tr>
+		<tr>
+			<th>Ổ cứng:</th>
+			<td>
+				<input type="text" name="txt_ocung" placeholder="">
 			</td>
 		</tr>
 		<tr>
@@ -59,21 +65,15 @@ viewAdminLayout('head');
 			</td>
 		</tr>
 		<tr>
-			<th>HDD:</th>
-			<td>
-				<input type="text" name="txt_hdd" placeholder="GB">
-			</td>
-		</tr>
-		<tr>
-			<th>SSD:</th>
-			<td>
-				<input type="text" name="txt_ssd" placeholder="GB">
-			</td>
-		</tr>
-		<tr>
 			<th>Hệ điều hành:</th>
 			<td>
 				<input type="text" name="txt_hdh">
+			</td>
+		</tr>
+		<tr>
+			<th>Kích thước:</th>
+			<td>
+				<input type="text" name="txt_kichthuoc" placeholder="">
 			</td>
 		</tr>
 		<tr>

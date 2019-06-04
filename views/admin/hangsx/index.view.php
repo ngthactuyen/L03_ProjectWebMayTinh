@@ -5,12 +5,14 @@ viewAdminLayout('head');
 <h2>Quản lý Hãng sản xuất</h2>
 <?php viewAdminLayout('message'); ?>
 <form action="?controller=hangsx" method="post">
-	<input type="text" name="txt_keyword" placeholder="Tìm kiếm theo tên hãng sản xuất" value="<?= isset($keyword) ? $keyword: '' ?>">
+	<input class="inputSearch" type="text" name="txt_keyword" placeholder="Tìm kiếm theo tên hãng sản xuất" value="<?= isset($keyword) ? $keyword: '' ?>">
 	<button type="submit">Tìm kiếm</button>
 </form>
 
 <p>
-	<a href="?controller=hangsx&action=add">Thêm mới</a>
+	<button>
+		<a href="?controller=hangsx&action=add">Thêm mới</a>
+	</button>
 </p>
 <table border="1px" cellpadding="5px">
 	<tr>

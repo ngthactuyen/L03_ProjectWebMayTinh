@@ -9,10 +9,10 @@ class Laptop
 	public $manhinh;
 	public $cpu;
 	public $ram;
+	public $ocung;
 	public $vga;
-	public $hdd;
-	public $ssd;
 	public $hdh;
+	public $kichthuoc;
 	public $khoiluong;
 	public $pin;
 	public $url_laptop;
@@ -30,10 +30,10 @@ class Laptop
 		$this->manhinh = $data['manhinh'];
 		$this->cpu = $data['cpu'];
 		$this->ram = $data['ram'];
+		$this->ocung = $data['ocung'];
 		$this->vga = $data['vga'];
-		$this->hdd = $data['hdd'];
-		$this->ssd = $data['ssd'];
 		$this->hdh = $data['hdh'];
+		$this->kichthuoc = $data['kichthuoc'];
 		$this->khoiluong = $data['khoiluong'];
 		$this->pin = $data['pin'];
 		$this->url_laptop = $data['url_laptop'];

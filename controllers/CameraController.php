@@ -1,44 +1,54 @@
 <?php
-class HangSXController{
-	protected $hangsxSql;
+class CameraController{
+	protected $cameraSql;
 	
 	function __construct()
 	{
-		$this->hangsxSql = new HangSXSql();
+		$this->cameraSql = new CameraSql();
 	}
 
 	function index()
 	{
 		if (isset($_POST['txt_keyword'])) {
 			$keyword = $_POST['txt_keyword'];
-			$hangsxList = $this->hangsxSql->getAllHangSX();
-			viewAdmin('hangsx/index', ['hangsxList' => $hangsxList, 'keyword' => $keyword]);
+			$cameraList = $this->cameraSql->getAllCamera();
+			viewAdmin('camera/index', ['cameraList' => $cameraList, 'keyword' => $keyword]);
 		} else {
-			$hangsxList = $this->hangsxSql->getAllHangSX();
-			viewAdmin('hangsx/index', ['hangsxList' => $hangsxList]);
+			$cameraList = $this->cameraSql->getAllCamera();
+			viewAdmin('camera/index', ['cameraList' => $cameraList]);
 		}
 		
 	}
 
 	function add(){
-		viewAdmin('hangsx/add');
+		$hangsxSql = new hangsxSql();
+		$hangsxList = $hangsxSql->getHangSXCamera();
+		viewAdmin('camera/add', ['hangsxList' => $hangsxList]);
 	}
 
 	function addsave(){
 		// dd($_POST);
 		// dd($_FILES);
-		$loaisp = $_POST['sl_loaisp'];
-		$tenhangsx = $_POST['txt_tenhangsx'];
-		$anh_hangsx = 'assets/images/hangsx/'.$_FILES['file_anh']['name'];
+		$id_camera = $_POST['txt_id_camera'];
+		$hangsx_id = $_POST['sl_hangsx_id'];
+		$ten_camera = $_POST['txt_ten_camera'];
+		$gia_camera = $_POST['txt_gia_camera'];
+		$dophangiai = $_POST['txt_dophangiai'];
+		$ongkinh = $_POST['txt_ongkinh'];
+		$bankinhhongngoai = $_POST['txt_bankinhhongngoai'];
+		$url_camera = $_POST['txt_url'];
+		$anh_camera = 'assets/images/camera/'.$_FILES['file_anh']['name'];
+		$mota = $_POST['txt_mota'];
 
-		$check = $this->hangsxSql->insertHangSX($loaisp, $tenhangsx, $anh_hangsx);
+		$check = $this->cameraSql->insertCamera($id_camera, $hangsx_id, $ten_camera, $gia_camera, $dophangiai, $ongkinh, $bankinhhongngoai, $url_camera, $anh_camera, $mota);
+		// dd($check);
 		if ($check) {
-			move_uploaded_file($_FILES['file_anh']['tmp_name'], $anh_hangsx);
+			move_uploaded_file($_FILES['file_anh']['tmp_name'], $anh_camera);
 			setSuccessMessage('Thêm mới thành công');
-			redirect('hangsx');
+			redirect('camera');
 		} else {
 			setErrorMessage('Thêm mới thất bại');
-			redirect('hangsx');
+			redirect('camera');
 		}
 	}
 

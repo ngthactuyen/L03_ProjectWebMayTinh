@@ -9,6 +9,10 @@ body{
 	clear: both;
 }
 
+.header{
+    position: fixed;
+}
+
 .header-logo {
     float: left;
     width: 20%;
@@ -16,7 +20,6 @@ body{
     background-color: #337ab7;
     font-size: 20px;
     text-align: center;
-    position: fixed;
 }
 
 .header-content {

@@ -116,8 +116,8 @@ viewAdminLayout('head');
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center">
-				<button type="submit" name="">Sửa thông tin</button>
+			<td id="btn" colspan="2" align="center">
+				<button class="btn-add" type="submit">Sửa thông tin</button>
 			</td>
 		</tr>
 	</table>

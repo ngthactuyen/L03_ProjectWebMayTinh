@@ -5,7 +5,7 @@ class CameraSql
 	function getAllCamera(){
 		// $keyword = isset($_GET['txt_keyword']) ? $_GET['txt_keyword'] : '';
 		$keyword = isset($_POST['txt_keyword']) ? $_POST['txt_keyword'] : '';
-		$sql = "select * from tbl_camera join tbl_hangsx on tbl_camera.hangsx_id = tbl_hangsx.id_hangsx where id_camera like '%$keyword%' or ten_camera like '%$keyword%' order by tenhangsx";
+		$sql = "select * from tbl_camera join tbl_hangsx on tbl_camera.hangsx_id = tbl_hangsx.id_hangsx where id_camera like '%$keyword%' or ten_camera like '%$keyword%' order by tenhangsx, id_camera";
 		$cameraList = getAllData($sql);
 		// dd($cameraList);
 		$cameraObject = [];
@@ -19,7 +19,7 @@ class CameraSql
 	public function getOneCamera($id_camera)
 	{
 		$temp = getOneData("select * from tbl_camera where id_camera like '$id_camera'");
-		return $camera = new camera($temp);
+		return $camera = new Camera($temp);
 	}
 
 	function insertCamera($id_camera, $hangsx_id, $ten_camera, $gia_camera, $dophangiai, $ongkinh, $bankinhhongngoai, $url_camera, $anh_camera, $mota)
@@ -29,17 +29,17 @@ class CameraSql
 		return execute($sql);
 	}
 
-	function deleteCamera($id_laptop){
-		$sql = "delete from tbl_laptop where id_laptop like '$id_laptop' ";
+	function deleteCamera($id_camera){
+		$sql = "delete from tbl_camera where id_camera like '$id_camera' ";
 		return execute($sql);
 	}
 
-	function updateCamera($id_laptop, $hangsx_id, $ten_laptop, $gia_laptop, $manhinh, $cpu, $ram, $ocung, $vga, $hdh, $kichthuoc, $khoiluong, $pin, $url_laptop, $anh_laptop, $nhucau, $mota)
+	function updateCamera($id_camera, $hangsx_id, $ten_camera, $gia_camera, $dophangiai, $ongkinh, $bankinhhongngoai, $url_camera, $anh_camera, $mota)
 	{
-		if ($anh_laptop == '') {
-			$sql = "update tbl_laptop set hangsx_id = $hangsx_id, ten_laptop = '$ten_laptop', gia_laptop = $gia_laptop, manhinh = '$manhinh', cpu = '$cpu', ram = '$ram', ocung = '$ocung', vga = '$vga', hdh = '$hdh', kichthuoc = '$kichthuoc', khoiluong = $khoiluong, pin = '$pin', url_laptop = '$url_laptop', nhucau = $nhucau, mota = '$mota' where id_laptop like '$id_laptop'";
+		if ($anh_camera == '') {
+			$sql = "update tbl_camera set hangsx_id = $hangsx_id, ten_camera = '$ten_camera', gia_camera = $gia_camera, dophangiai = $dophangiai, ongkinh = $ongkinh, bankinhhongngoai = $bankinhhongngoai, url_camera = '$url_camera', mota = '$mota' where id_camera like '$id_camera'";
 		} else {
-			$sql = "update tbl_laptop set hangsx_id = $hangsx_id, ten_laptop = '$ten_laptop', gia_laptop = $gia_laptop, manhinh = '$manhinh', cpu = '$cpu', ram = '$ram', ocung = '$ocung', vga = '$vga', hdh = '$hdh', kichthuoc = '$kichthuoc', khoiluong = $khoiluong, pin = '$pin', url_laptop = '$url_laptop', anh_laptop = '$anh_laptop', nhucau = $nhucau, mota = '$mota' where id_laptop like '$id_laptop'";
+			$sql = "update tbl_camera set hangsx_id = $hangsx_id, ten_camera = '$ten_camera', gia_camera = $gia_camera, dophangiai = $dophangiai, ongkinh = $ongkinh, bankinhhongngoai = $bankinhhongngoai, url_camera = '$url_camera', anh_camera = '$anh_camera', mota = '$mota' where id_camera like '$id_camera'";
 		}
 		// die($sql);
 		return execute($sql);

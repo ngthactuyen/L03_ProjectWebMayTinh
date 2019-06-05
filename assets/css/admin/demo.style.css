@@ -60,12 +60,75 @@ body{
 }
 
 .content{
+    text-align: center;
     margin-top: 63px;
     background-color: #ecf0f5;
 }
 
+/*.content tr:nth-child(even) {
+    background-color: white;
+    border-color: #ecf0f5; 
+}*/
+
+#inputSearch{
+    height: 25px;
+    width: 60%;
+}
+
+#btn{
+    text-align: center;
+}
+
+.content tr:hover{
+    background-color: white;
+    border: 1px solid #ecf0f5;
+}
+
+.content th{
+    /*background-color: #328410;
+    color: white;*/
+}
+
+.content td{
+    text-align: left;
+}
+
+.btn-delete{
+    background-color: #ac2925;
+    border-color: #761c19;
+}
+
+.btn-add{
+    background-color: #0f5075;
+    border-color: #367fa9;
+}
+
+.content button{
+    /*background-color: #367fa9;*/
+    border: none;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.content button a{
+    color: white;
+}
+
+.content table{
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid white;
+}
+
 .content img{
-    width: 150px;
+    width: 100px;
 }
 
 .content h2{
@@ -78,18 +141,13 @@ body{
 }
 
 .content input {
-    width: 574px;
-    height: 20px;
+    width: 100%;
+    height: 25px;
 }
 
 .content select {
     height: 25px;
+    min-width: 300px;
 }
 
-.content button {
-    height: 25px;
-}
 
-.content table{
-    border-color: white;
-}

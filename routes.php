@@ -34,6 +34,11 @@ switch ($controller) {
 		$cameraController->$action();
 		break;
 
+	case 'nhanvien':
+		$nhanvienController = new NhanVienController();
+		$nhanvienController->$action();
+		break;
+
 	default:
 		echo "Không có controller nào được gọi";
 		break;

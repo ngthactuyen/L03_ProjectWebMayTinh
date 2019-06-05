@@ -13,6 +13,8 @@
 				<a href="?controller=hangsx">Quản lý Hãng sản xuất</a>
 				<a href="?controller=laptop">Quản lý Laptop</a>
 				<a href="?controller=camera">Quản lý Camera</a>
+				<a href="?controller=nhanvien">Quản lý Nhân viên</a>
+
 			</div>
 		</div>
 		<div class="header-content">

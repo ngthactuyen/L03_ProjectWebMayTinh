@@ -54,43 +54,56 @@ class CameraController{
 
 	public function delete()	
 	{
-		$id_hangsx = $_GET['id_hangsx'];
-		$check = $this->hangsxSql->deleteHangSX($id_hangsx);
+		$id_camera = $_GET['id_camera'];
+		$check = $this->cameraSql->deleteCamera($id_camera);
 		if ($check) {
 			setSuccessMessage('Xóa thành công');
-			redirect('hangsx');
+			redirect('camera');
 		} else {
 			setErrorMessage('Xóa thất bại');
-			redirect('hangsx');
+			redirect('camera');
 		}
 	}
 
 	public function update()
 	{
-		$id_hangsx = $_GET['id_hangsx'];
-		$hangsx = $this->hangsxSql->getOneHangSX($id_hangsx);
-		viewAdmin('hangsx/update', ['hangsx' => $hangsx]);
+		$hangsxSql = new hangsxSql();
+		$hangsxList = $hangsxSql->getHangSXCamera();
+		$id_camera = $_GET['id_camera'];
+		$camera = $this->cameraSql->getOneCamera($id_camera);
+		viewAdmin('camera/update', ['camera' => $camera, 'hangsxList' => $hangsxList]);
 	}
 
 	public function updatesave()
 	{
-		$id_hangsx = $_POST['txt_id_hangsx'];
-		$loaisp = $_POST['sl_loaisp'];
-		$tenhangsx = $_POST['txt_tenhangsx'];
+		// dd($_POST);
+		// dd($_FILES);
+		$id_camera = $_POST['txt_id_camera'];
+		$hangsx_id = $_POST['sl_hangsx_id'];
+		$ten_camera = $_POST['txt_ten_camera'];
+		$gia_camera = $_POST['txt_gia_camera'];
+		$dophangiai = $_POST['txt_dophangiai'];
+		$ongkinh = $_POST['txt_ongkinh'];
+		$bankinhhongngoai = $_POST['txt_bankinhhongngoai'];
+		$url_camera = $_POST['txt_url'];
+		$anh_camera = 'assets/images/camera/'.$_FILES['file_anh']['name'];
+		$mota = $_POST['txt_mota'];
+
 		if ($_FILES['file_anh']['name'] == '') {
-			$anh_hangsx = '';
-			$check = $this->hangsxSql->updateHangSX($id_hangsx, $loaisp, $tenhangsx, $anh_hangsx);
+			$anh_camera = '';
 		} else {
-			$anh_hangsx = 'assets/images/hangsx/'.$_FILES['file_anh']['name'];
-			$check = $this->hangsxSql->updateHangSX($id_hangsx, $loaisp, $tenhangsx, $anh_hangsx);
+			$anh_camera = 'assets/images/camera/'.$_FILES['file_anh']['name'];
 		}
+		
+		$check = $this->cameraSql->updateCamera($id_camera, $hangsx_id, $ten_camera, $gia_camera, $dophangiai, $ongkinh, $bankinhhongngoai, $url_camera, $anh_camera, $mota);
+		// die($check);
 		if ($check) {
-			move_uploaded_file($_FILES['file_anh']['tmp_name'], $anh_hangsx);
+			move_uploaded_file($_FILES['file_anh']['tmp_name'], $anh_camera);
 			setSuccessMessage('Sửa thông tin thành công');
-			redirect('hangsx');		
+			redirect('camera');		
 		} else {
 			setErrorMessage('Sửa thông tin thất bại');
-			redirect('hangsx');
+			redirect('camera');
 		}
 	}
 }

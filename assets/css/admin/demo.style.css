@@ -63,6 +63,7 @@ body{
     text-align: center;
     margin-top: 63px;
     background-color: #ecf0f5;
+    min-height: 560px;
 }
 
 /*.content tr:nth-child(even) {
@@ -79,6 +80,10 @@ body{
     text-align: center;
 }
 
+#td-select{
+    text-align: left;
+}
+
 .content tr:hover{
     background-color: white;
     border: 1px solid #ecf0f5;
@@ -90,7 +95,7 @@ body{
 }
 
 .content td{
-    text-align: left;
+    /*text-align: left;*/
 }
 
 .btn-delete{
@@ -103,7 +108,7 @@ body{
     border-color: #367fa9;
 }
 
-.content button{
+button{
     /*background-color: #367fa9;*/
     border: none;
     color: white;
@@ -117,7 +122,7 @@ body{
     border-radius: 4px;
 }
 
-.content button a{
+button a{
     color: white;
 }
 
@@ -136,7 +141,7 @@ body{
     margin: 0;
 }
 
-.content a{
+a{
     text-decoration: none;
 }
 

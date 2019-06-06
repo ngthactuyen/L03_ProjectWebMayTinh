@@ -1,18 +1,44 @@
 <?php
 $controller = @$_GET['controller'];
-if (!$controller) {
+$action = @$_GET['action'];
+
+if (!$controller && !$action) {
 	$controller = 'site';
+	$action = 'trangchu';
+}else {
+	if ($controller != 'site') {
+		if (!isset($_SESSION['id_nhanvien'])) {
+			if ($controller == 'nhanvien' && $action == 'authenticate') {
+				$controller = 'nhanvien';
+				$action = 'authenticate';
+			}else {
+				$controller = 'nhanvien';
+				$action = 'login';
+			}
+		} else {
+			if (!$action) {
+				$action = 'index';
+			}
+		}
+	}	
 }
 
-$action = @$_GET['action'];
-if (!$action) {
-	if ($controller == 'site') {
-		$action = 'trangchu';
-	}
-	else {
-		$action = 'index';
-	}
-}
+
+
+// if (!$controller) {
+// 	$controller = 'site';
+// }
+
+// $action = @$_GET['action'];
+// if (!$action) {
+// 	if ($controller == 'site') {
+// 		$action = 'trangchu';
+// 	}
+// 	else {
+// 		$action = 'index';
+// 	}
+// }
+
 
 // echo "<pre>";
 // var_dump($controller, $action);

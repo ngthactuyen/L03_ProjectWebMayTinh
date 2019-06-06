@@ -1,3 +1,7 @@
+<?php 
+// dd($_SESSION);
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,12 +17,24 @@
 				<a href="?controller=hangsx">Quản lý Hãng sản xuất</a>
 				<a href="?controller=laptop">Quản lý Laptop</a>
 				<a href="?controller=camera">Quản lý Camera</a>
-				<a href="?controller=nhanvien">Quản lý Nhân viên</a>
+				<?php 
+					if ($_SESSION['phanquyen'] == 1) {
+						echo '<a href="?controller=nhanvien">Quản lý Nhân viên</a>';
+					}
+				?>
+				<a href="?controller=nhaphang">Quản lý Nhập hàng</a>
 
 			</div>
 		</div>
 		<div class="header-content">
-			
+			<p style="font-size: 25px; text-align: right; margin: 15px">
+			<?php 
+				echo 'Xin chào, '.$_SESSION['hoten'];
+			?>
+				<button class="btn-add">
+					<a href="?controller=nhanvien&action=logout">Đăng xuất</a>
+				</button>
+			</p>
 		</div>
 	</div>
 	<div class="content">

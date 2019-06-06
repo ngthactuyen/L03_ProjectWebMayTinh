@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 04, 2019 lúc 06:14 PM
+-- Thời gian đã tạo: Th6 06, 2019 lúc 05:14 PM
 -- Phiên bản máy phục vụ: 10.1.29-MariaDB
 -- Phiên bản PHP: 7.2.0
 
@@ -203,6 +203,15 @@ CREATE TABLE `tbl_nhanvien` (
   `ngaytao` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `tbl_nhanvien`
+--
+
+INSERT INTO `tbl_nhanvien` (`id_nhanvien`, `hoten`, `diachi`, `sdt`, `tendangnhap`, `matkhau`, `phanquyen`, `ngaytao`) VALUES
+(3, 'Nguyễn B', 'Hà Tây', '20020020', 'b', 'b', 0, '2019-06-06 00:26:45'),
+(4, 'Nguyễn A', 'Hà Nội', '10010010', 'a', 'a', 1, '2019-06-06 00:44:15'),
+(5, 'Nguyễn C', 'Hà Nam', '30030030', 'c', 'c', 0, '2019-06-06 10:22:09');
+
 -- --------------------------------------------------------
 
 --
@@ -227,6 +236,7 @@ CREATE TABLE `tbl_nhaphangchitiet` (
   `nhaphang_id` int(11) DEFAULT NULL,
   `loaisp` int(11) DEFAULT NULL,
   `sanpham_id` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `giasp` float DEFAULT NULL,
   `soluong` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -317,7 +327,7 @@ ALTER TABLE `tbl_hoadon`
 -- AUTO_INCREMENT cho bảng `tbl_nhanvien`
 --
 ALTER TABLE `tbl_nhanvien`
-  MODIFY `id_nhanvien` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_nhanvien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_nhaphang`

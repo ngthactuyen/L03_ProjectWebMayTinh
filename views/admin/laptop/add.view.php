@@ -14,7 +14,7 @@ viewAdminLayout('head');
 		</tr>
 		<tr>
 			<th>Hãng sản xuất: </th>
-			<td>
+			<td id="td-select">
 				<select name="sl_hangsx_id">
 					<?php foreach ($hangsxList as $key => $value): ?>
 						<option value="<?= $value->id_hangsx?>"><?= $value->tenhangsx?></option>
@@ -102,7 +102,7 @@ viewAdminLayout('head');
 		</tr>
 		<tr>
 			<th>Nhu cầu:</th>
-			<td>
+			<td id="td-select">
 				<select name="sl_nhucau">
 					<option value="1">Học tập - Văn phòng</option>
 					<option value="2">Đồ họa - Kỹ thuật</option>

@@ -14,6 +14,14 @@ require_once 'models/Camera.php';
 require_once 'models/CameraSql.php';
 require_once 'controllers/CameraController.php';
 
+require_once 'models/NhanVien.php';
+require_once 'models/NhanVienSql.php';
+require_once 'controllers/NhanVienController.php';
+
+// require_once 'models/NhapHang.php';
+// require_once 'models/NhapHangSql.php';
+// require_once 'controllers/NhapHangController.php';
+
 // require 'views/admin/layout/layout-demo.view.php';
 require_once 'routes.php';
 

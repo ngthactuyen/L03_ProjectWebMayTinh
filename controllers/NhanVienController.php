@@ -1,86 +1,115 @@
 <?php
-class HangSXController{
-	protected $hangsxSql;
+class NhanVienController{
+	protected $nhanvienSql;
 	
 	function __construct()
 	{
-		$this->hangsxSql = new HangSXSql();
+		$this->nhanvienSql = new NhanVienSql();
+	}
+
+	public function login()
+	{
+		viewAdmin('nhanvien/login');
+	}
+
+	public function authenticate()
+	{
+		// dd($_POST);
+		$tendangnhap = $_POST["txt_tendangnhap"];
+		$matkhau = $_POST["txt_matkhau"];
+		$nhanvien = $this->nhanvienSql->getOneNhanVienByTendangnhap($tendangnhap, $matkhau);
+		if (isset($nhanvien->id_nhanvien)) {
+			$_SESSION['id_nhanvien'] = $nhanvien->id_nhanvien;
+			$_SESSION['hoten'] = $nhanvien->hoten;
+			$_SESSION['phanquyen'] = $nhanvien->phanquyen;
+			redirect('laptop');
+		} else {
+			setErrorMessage('Tên đăng nhập hoặc mật khẩu sai!');
+			viewAdmin('nhanvien/login', ['tendangnhap' => $tendangnhap, 'matkhau' => $matkhau]);
+		}
+	}
+
+	public function logout()
+	{
+		session_unset();
+		viewAdmin('nhanvien/login');
 	}
 
 	function index()
 	{
 		if (isset($_POST['txt_keyword'])) {
 			$keyword = $_POST['txt_keyword'];
-			$hangsxList = $this->hangsxSql->getAllHangSX();
-			viewAdmin('hangsx/index', ['hangsxList' => $hangsxList, 'keyword' => $keyword]);
+			$nhanvienList = $this->nhanvienSql->getAllNhanVien();
+			viewAdmin('nhanvien/index', ['nhanvienList' => $nhanvienList, 'keyword' => $keyword]);
 		} else {
-			$hangsxList = $this->hangsxSql->getAllHangSX();
-			viewAdmin('hangsx/index', ['hangsxList' => $hangsxList]);
+			$nhanvienList = $this->nhanvienSql->getAllNhanVien();
+			viewAdmin('nhanvien/index', ['nhanvienList' => $nhanvienList]);
 		}
 		
 	}
 
 	function add(){
-		viewAdmin('hangsx/add');
+		viewAdmin('nhanvien/add');
 	}
 
 	function addsave(){
 		// dd($_POST);
-		// dd($_FILES);
-		$loaisp = $_POST['sl_loaisp'];
-		$tenhangsx = $_POST['txt_tenhangsx'];
-		$anh_hangsx = 'assets/images/hangsx/'.$_FILES['file_anh']['name'];
+		$hoten = $_POST['txt_hoten'];
+		$diachi = $_POST['txt_diachi'];
+		$sdt = $_POST['txt_sdt'];
+		$tendangnhap = $_POST['txt_tendangnhap'];
+		$matkhau = $_POST['txt_matkhau'];
+		$phanquyen = $_POST['sl_phanquyen'];
+		
 
-		$check = $this->hangsxSql->insertHangSX($loaisp, $tenhangsx, $anh_hangsx);
+		$check = $this->nhanvienSql->insertNhanVien($hoten, $diachi, $sdt, $tendangnhap, $matkhau, $phanquyen);
 		if ($check) {
-			move_uploaded_file($_FILES['file_anh']['tmp_name'], $anh_hangsx);
 			setSuccessMessage('Thêm mới thành công');
-			redirect('hangsx');
+			redirect('nhanvien');
 		} else {
 			setErrorMessage('Thêm mới thất bại');
-			redirect('hangsx');
+			redirect('nhanvien');
 		}
 	}
 
 	public function delete()	
 	{
-		$id_hangsx = $_GET['id_hangsx'];
-		$check = $this->hangsxSql->deleteHangSX($id_hangsx);
+		$id_nhanvien = $_GET['id_nhanvien'];
+		$check = $this->nhanvienSql->deleteNhanVien($id_nhanvien);
 		if ($check) {
 			setSuccessMessage('Xóa thành công');
-			redirect('hangsx');
+			redirect('nhanvien');
 		} else {
 			setErrorMessage('Xóa thất bại');
-			redirect('hangsx');
+			redirect('nhanvien');
 		}
 	}
 
 	public function update()
 	{
-		$id_hangsx = $_GET['id_hangsx'];
-		$hangsx = $this->hangsxSql->getOneHangSX($id_hangsx);
-		viewAdmin('hangsx/update', ['hangsx' => $hangsx]);
+		$id_nhanvien = $_GET['id_nhanvien'];
+		$nhanvien = $this->nhanvienSql->getOneNhanVien($id_nhanvien);
+		viewAdmin('nhanvien/update', ['nhanvien' => $nhanvien]);
 	}
 
 	public function updatesave()
 	{
-		$id_hangsx = $_POST['txt_id_hangsx'];
-		$loaisp = $_POST['sl_loaisp'];
-		$tenhangsx = $_POST['txt_tenhangsx'];
-		if ($_FILES['file_anh']['name'] == '') {
-			$anh_hangsx = '';
-			$check = $this->hangsxSql->updateHangSX($id_hangsx, $loaisp, $tenhangsx, $anh_hangsx);
-		} else {
-			$anh_hangsx = 'assets/images/hangsx/'.$_FILES['file_anh']['name'];
-			$check = $this->hangsxSql->updateHangSX($id_hangsx, $loaisp, $tenhangsx, $anh_hangsx);
-		}
+		// dd($_POST);
+		$id_nhanvien = $_POST["txt_id_nhanvien"];
+		$hoten = $_POST['txt_hoten'];
+		$diachi = $_POST['txt_diachi'];
+		$sdt = $_POST['txt_sdt'];
+		$tendangnhap = $_POST['txt_tendangnhap'];
+		$matkhau = $_POST['txt_matkhau'];
+		$phanquyen = $_POST['sl_phanquyen'];
+
+		$check = $this->nhanvienSql->updateNhanVien($id_nhanvien, $hoten, $diachi, $sdt, $tendangnhap, $matkhau, $phanquyen);
 		if ($check) {
-			move_uploaded_file($_FILES['file_anh']['tmp_name'], $anh_hangsx);
 			setSuccessMessage('Sửa thông tin thành công');
-			redirect('hangsx');		
+			redirect('nhanvien');		
 		} else {
 			setErrorMessage('Sửa thông tin thất bại');
-			redirect('hangsx');
+			redirect('nhanvien');
 		}
 	}
 }

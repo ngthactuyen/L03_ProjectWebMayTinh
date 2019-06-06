@@ -1,0 +1,122 @@
+body{
+	margin: 0px;
+	padding-top: 100px;
+    text-align: center;
+    min-height: 560px;
+    background-color: #ecf0f5;
+}
+
+table{
+    border-collapse: collapse;
+    width: 50%;
+    margin: 40px 310px;
+    font-size: 15px;
+}
+
+td input{
+    width: 100%;
+    height: 20px;
+    margin: 5px;
+}
+
+button{
+    /*background-color: #367fa9;*/
+    border: none;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #0f5075;
+    border-color: #367fa9;
+    width: 150px;
+}
+
+th{
+    font-size: 20px;
+}
+
+
+
+
+.content{
+    margin-top: 63px;
+}
+
+/*.content tr:nth-child(even) {
+    background-color: white;
+    border-color: #ecf0f5; 
+}*/
+
+#inputSearch{
+    height: 25px;
+    width: 60%;
+}
+
+#btn{
+    text-align: center;
+}
+
+#td-select{
+    text-align: left;
+}
+
+.content tr:hover{
+    background-color: white;
+    border: 1px solid #ecf0f5;
+}
+
+.content th{
+    /*background-color: #328410;
+    color: white;*/
+}
+
+.content td{
+    /*text-align: left;*/
+}
+
+.btn-delete{
+    background-color: #ac2925;
+    border-color: #761c19;
+}
+
+.btn-add{
+    background-color: #0f5075;
+    border-color: #367fa9;
+}
+
+
+
+.content button a{
+    color: white;
+}
+
+
+.content img{
+    width: 100px;
+}
+
+.content h2{
+    padding: 20px;
+    margin: 0;
+}
+
+.content a{
+    text-decoration: none;
+}
+
+.content input {
+    width: 100%;
+    height: 25px;
+}
+
+.content select {
+    height: 25px;
+    min-width: 300px;
+}
+
+

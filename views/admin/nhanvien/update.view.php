@@ -1,31 +1,49 @@
 <?php
-// dd($hangsx);
+// dd($nhanvien);	
 viewAdminLayout('head');
 ?>
 
 <h2>Sửa thông tin Hãng sản xuất</h2>
-<form action="?controller=hangsx&action=updatesave" method="post" enctype="multipart/form-data">
-	<input type="hidden" name="txt_id_hangsx" value="<?= $hangsx->id_hangsx ?>">
+<form action="?controller=nhanvien&action=updatesave" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="txt_id_nhanvien" value="<?= $nhanvien->id_nhanvien ?>">
 	<table border="1px" cellpadding="5px">
 		<tr>
-			<th>Loại sản phẩm: </th>
+			<th>Họ tên: </th>
 			<td>
-				<select name="sl_loaisp">
-					<option value="1" <?= ($hangsx->loaisp == 1) ? 'selected': '' ?> >Laptop</option>
-					<option value="2" <?= ($hangsx->loaisp == 2) ? 'selected': '' ?> >Camera</option>
+				<input type="text" name="txt_hoten" value="<?= $nhanvien->hoten ?>">
+			</td>
+		</tr>
+		<tr>
+			<th>Địa chỉ: </th>
+			<td>
+				<input type="text" name="txt_diachi" value="<?= $nhanvien->diachi ?>">
+			</td>
+		</tr>
+		<tr>
+			<th>Số điện thoại: </th>
+			<td>
+				<input type="text" name="txt_sdt" value="<?= $nhanvien->sdt ?>">
+			</td>
+		</tr>
+		<tr>
+			<th>Tên đăng nhập: </th>
+			<td>
+				<input type="text" name="txt_tendangnhap" value="<?= $nhanvien->tendangnhap ?>">
+			</td>
+		</tr>
+		<tr>
+			<th>Mật khẩu: </th>
+			<td>
+				<input type="text" name="txt_matkhau" value="<?= $nhanvien->matkhau ?>">
+			</td>
+		</tr>
+		<tr>
+			<th>Phân quyền: </th>
+			<td id="td-select">
+				<select name="sl_phanquyen">
+					<option value="1" <?= ($nhanvien->phanquyen == 1) ? 'selected': '' ?> >Admin</option>
+					<option value="0" <?= ($nhanvien->phanquyen == 0) ? 'selected': '' ?> >Nhân viên</option>
 				</select>
-			</td>
-		</tr>
-		<tr>
-			<th>Tên hãng: </th>
-			<td>
-				<input type="text" name="txt_tenhangsx" value="<?= $hangsx->tenhangsx?>">
-			</td>
-		</tr>
-		<tr>
-			<th>Ảnh: </th>
-			<td>
-				<input type="file" name="file_anh">
 			</td>
 		</tr>
 		<tr>

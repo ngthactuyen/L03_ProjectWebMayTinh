@@ -1,5 +1,5 @@
 <?php
-class HangSX
+class NhanVien
 {
 	public $id_nhanvien;
 	public $hoten;

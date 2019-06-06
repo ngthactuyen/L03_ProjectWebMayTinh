@@ -1,28 +1,46 @@
 <?php
 viewAdminLayout('head');
 ?>
-<h2>Thêm mới Hãng sản xuất</h2>
-<form action="?controller=hangsx&action=addsave" method="post" enctype="multipart/form-data">
+<h2>Thêm mới Nhân viên</h2>
+<form action="?controller=nhanvien&action=addsave" method="post">
 	<table border="1px" cellpadding="5px">
 		<tr>
-			<th>Loại sản phẩm: </th>
+			<th>Họ tên: </th>
 			<td>
-				<select name="sl_loaisp">
-					<option value="1">Laptop</option>
-					<option value="2">Camera</option>
+				<input type="text" name="txt_hoten">
+			</td>
+		</tr>
+		<tr>
+			<th>Địa chỉ: </th>
+			<td>
+				<input type="text" name="txt_diachi">
+			</td>
+		</tr>
+		<tr>
+			<th>Số điện thoại: </th>
+			<td>
+				<input type="text" name="txt_sdt">
+			</td>
+		</tr>
+		<tr>
+			<th>Tên đăng nhập: </th>
+			<td>
+				<input type="text" name="txt_tendangnhap">
+			</td>
+		</tr>
+		<tr>
+			<th>Mật khẩu: </th>
+			<td>
+				<input type="text" name="txt_matkhau">
+			</td>
+		</tr>
+		<tr>
+			<th>Phân quyền: </th>
+			<td id="td-select">
+				<select name="sl_phanquyen">
+					<option value="1">Admin</option>
+					<option value="0">Nhân viên</option>
 				</select>
-			</td>
-		</tr>
-		<tr>
-			<th>Tên hãng: </th>
-			<td>
-				<input type="text" name="txt_tenhangsx">
-			</td>
-		</tr>
-		<tr>
-			<th>Ảnh: </th>
-			<td>
-				<input type="file" name="file_anh">
 			</td>
 		</tr>
 		<tr>

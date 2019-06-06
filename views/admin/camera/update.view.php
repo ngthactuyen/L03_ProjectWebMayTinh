@@ -10,7 +10,7 @@ viewAdminLayout('head');
 		<input type="hidden" name="txt_id_camera" value="<?= $camera->id_camera?>">
 		<tr>
 			<th>Hãng sản xuất: </th>
-			<td>
+			<td id="td-select">
 				<select name="sl_hangsx_id">
 					<?php foreach ($hangsxList as $key => $value): ?>
 						<option value="<?= $value->id_hangsx?>" <?= ($camera->hangsx_id == $value->id_hangsx) ? 'selected': '' ?> ><?= $value->tenhangsx?></option>

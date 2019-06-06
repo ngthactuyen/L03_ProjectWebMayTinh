@@ -2,73 +2,53 @@
 /**
  * 
  */
-class HangSXSql
+class NhanVienSql
 {	
-	function getAllHangSX(){
+	function getAllNhanVien(){
 		// dd($_GET);
 		// $keyword = isset($_GET['txt_keyword']) ? $_GET['txt_keyword'] : '';
 		$keyword = isset($_POST['txt_keyword']) ? $_POST['txt_keyword'] : '';
-		$sql = "select * from tbl_hangsx where tenhangsx like '%$keyword%'";
-		$hangsxList = getAllData($sql);
-		// dd($hangsxList);
-		$hangsxObject = [];
-		foreach ($hangsxList as $hangsx) {
-			$hangsxObject[] = new HangSX($hangsx);
+		$sql = "select * from tbl_nhanvien where hoten like '%$keyword%' order by phanquyen desc";
+		$nhanvienList = getAllData($sql);
+		// dd($nhanvienList);
+		$nhanvienObject = [];
+		foreach ($nhanvienList as $nhanvien) {
+			$nhanvienObject[] = new NhanVien($nhanvien);
 		}
-		// dd($hangsxObject);
-		return $hangsxObject;
+		// dd($nhanvienObject);
+		return $nhanvienObject;
 	}
 
-	public function getOneHangSX($id_hangsx)
+	public function getOneNhanVienByTendangnhap($tendangnhap, $matkhau)
 	{
-		$temp = getOneData("select * from tbl_hangsx where id_hangsx = $id_hangsx");
-		return $hangsx = new HangSX($temp);
+		$temp = getOneData("select * from tbl_nhanvien where tendangnhap like '$tendangnhap' and matkhau like '$matkhau'");
+		return $nhanvien = new NhanVien($temp);
 	}
 
-
-	function getHangSXLaptop()
+	public function getOneNhanVien($id_nhanvien)
 	{
-		$sql = "select * from tbl_hangsx where loaisp = 1 order by tenhangsx";
-		$hangsxList = getAllData($sql);
-		// dd($hangsxList);
-		$hangsxObject = [];
-		foreach ($hangsxList as $hangsx) {
-			$hangsxObject[] = new HangSX($hangsx);
-		}
-		// dd($hangsxObject);
-		return $hangsxObject;
+		$temp = getOneData("select * from tbl_nhanvien where id_nhanvien = $id_nhanvien");
+		return $nhanvien = new NhanVien($temp);
 	}
 
-	function getHangSXCamera()
+
+
+	function insertNhanVien($hoten, $diachi, $sdt, $tendangnhap, $matkhau, $phanquyen)
 	{
-		$sql = "select * from tbl_hangsx where loaisp = 2 order by tenhangsx";
-		$hangsxList = getAllData($sql);
-		// dd($hangsxList);
-		$hangsxObject = [];
-		foreach ($hangsxList as $hangsx) {
-			$hangsxObject[] = new HangSX($hangsx);
-		}
-		// dd($hangsxObject);
-		return $hangsxObject;
-	}
-
-	function insertHangSX($loaisp, $tenhangsx, $anh_hangsx){
-		$sql = "insert tbl_hangsx(loaisp, tenhangsx, anh_hangsx) value ($loaisp, '$tenhangsx', '$anh_hangsx')";
+		$sql = "insert tbl_nhanvien(hoten, diachi, sdt, tendangnhap, matkhau, phanquyen) value ('$hoten', '$diachi', $sdt, '$tendangnhap', '$matkhau', $phanquyen)";
 		return execute($sql);
 	}
 
-	function deleteHangSX($id_hangsx){
-		$sql = "delete from tbl_hangsx where id_hangsx = $id_hangsx";
+	function deleteNhanVien($id_nhanvien){
+		$sql = "delete from tbl_nhanvien where id_nhanvien = $id_nhanvien";
 		return execute($sql);
 	}
 
-	function updateHangSX($id_hangsx, $loaisp, $tenhangsx, $anh_hangsx){
-		if ($anh_hangsx == '') {
-			$sql = "update tbl_hangsx set loaisp = $loaisp, tenhangsx = '$tenhangsx' where id_hangsx = $id_hangsx";
-		} else {
-			$sql = "update tbl_hangsx set loaisp = $loaisp, tenhangsx = '$tenhangsx', anh_hangsx = '$anh_hangsx' where id_hangsx = $id_hangsx";
-		}
+	function updateNhanVien($id_nhanvien, $hoten, $diachi, $sdt, $tendangnhap, $matkhau, $phanquyen)
+	{
+		$sql = "update tbl_nhanvien set hoten = '$hoten', diachi = '$diachi', sdt = '$sdt', tendangnhap = '$tendangnhap', matkhau = '$matkhau', phanquyen = $phanquyen where id_nhanvien = $id_nhanvien";
 		// return $sql;
+		// die($sql);
 		return execute($sql);
 	}
 }

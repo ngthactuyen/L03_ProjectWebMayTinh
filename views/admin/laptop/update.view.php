@@ -12,7 +12,7 @@ viewAdminLayout('head');
 		<input type="hidden" name="txt_id_laptop" value="<?= $laptop->id_laptop?>">
 		<tr>
 			<th>Hãng sản xuất: </th>
-			<td>
+			<td id="td-select">
 				<select name="sl_hangsx_id">
 					<?php foreach ($hangsxList as $key => $value): ?>
 						<option value="<?= $value->id_hangsx?>" <?= ($laptop->hangsx_id == $value->id_hangsx) ? 'selected': '' ?> ><?= $value->tenhangsx?></option>
@@ -100,7 +100,7 @@ viewAdminLayout('head');
 		</tr>
 		<tr>
 			<th>Nhu cầu:</th>
-			<td>
+			<td id="td-select">
 				<select name="sl_nhucau">
 					<option value="1" <?= ($laptop->nhucau == 1) ? 'selected': '' ?> >Học tập - Văn phòng</option>
 					<option value="2" <?= ($laptop->nhucau == 2) ? 'selected': '' ?> >Đồ họa - Kỹ thuật</option>

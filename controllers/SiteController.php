@@ -1,87 +1,84 @@
 <?php
-class HangSXController{
-	protected $hangsxSql;
+class SiteController{
+	protected $siteSql;
 	
 	function __construct()
 	{
-		$this->hangsxSql = new HangSXSql();
+		$this->siteSql = new SiteSql();
 	}
 
-	function index()
+	function home()
 	{
-		if (isset($_POST['txt_keyword'])) {
-			$keyword = $_POST['txt_keyword'];
-			$hangsxList = $this->hangsxSql->getAllHangSX();
-			viewAdmin('hangsx/index', ['hangsxList' => $hangsxList, 'keyword' => $keyword]);
-		} else {
-			$hangsxList = $this->hangsxSql->getAllHangSX();
-			viewAdmin('hangsx/index', ['hangsxList' => $hangsxList]);
-		}
+		// $laptopList = $this->siteSql->laptopSql->getAllLaptop();
+		// $cameraList = $this->siteSql->cameraSql->getAllCamera();
+		$hangsxLaptop = $this->siteSql->hangsxSql->getHangSXLaptop();
+		$hangsxCamera = $this->siteSql->hangsxSql->getHangSXCamera();
+		$laptopList = $this->siteSql->getAllLaptopHome(8);
+		$cameraList = $this->siteSql->getAllCameraHome(8);
+		$remarkableLaptopList = $this->siteSql->getRemarkableLaptop(2);
+		$remarkableCameraList = $this->siteSql->getRemarkableCamera(2);
+
+
+
+		viewSite('home', ['laptopList' => $laptopList, 'cameraList' => $cameraList, 'hangsxLaptop' => $hangsxLaptop, 'hangsxCamera' => $hangsxCamera, 'remarkableLaptopList' => $remarkableLaptopList, 'remarkableCameraList' => $remarkableCameraList]);
 		
 	}
 
-	function add(){
-		viewAdmin('hangsx/add');
-	}
-
-	function addsave(){
+	function getAllLaptop(){
+		// dd($_GET);
 		// dd($_POST);
-		// dd($_FILES);
-		$loaisp = $_POST['sl_loaisp'];
-		$tenhangsx = $_POST['txt_tenhangsx'];
-		$anh_hangsx = 'assets/images/hangsx/'.$_FILES['file_anh']['name'];
 
-		$check = $this->hangsxSql->insertHangSX($loaisp, $tenhangsx, $anh_hangsx);
-		if ($check) {
-			move_uploaded_file($_FILES['file_anh']['tmp_name'], $anh_hangsx);
-			setSuccessMessage('Thêm mới thành công');
-			redirect('hangsx');
-		} else {
-			setErrorMessage('Thêm mới thất bại');
-			redirect('hangsx');
-		}
+		// echo "<pre>";
+		// print_r($_GET);
+
+		// echo "GET<br>";
+		// var_dump(count($_GET));
+		// var_dump($_GET);
+		// echo "<br><br>";
+
+		// $hangsx_id = @$_GET['hangsx_id'];
+		// echo "hangsx_id<br>";
+		// var_dump($hangsx_id);
+		// echo "<br><br>";
+		
+		$hangsxLaptop = $this->siteSql->hangsxSql->getHangSXLaptop();
+		$hangsxCamera = $this->siteSql->hangsxSql->getHangSXCamera();
+		$laptopList = $this->siteSql->getAllLaptop();
+
+		viewSite('allProductWithOneType', ['hangsxLaptop' => $hangsxLaptop, 'hangsxCamera' => $hangsxCamera, 'type' => 'laptop', 'laptopList' => $laptopList]);
 	}
 
-	public function delete()	
-	{
-		$id_hangsx = $_GET['id_hangsx'];
-		$check = $this->hangsxSql->deleteHangSX($id_hangsx);
-		if ($check) {
-			setSuccessMessage('Xóa thành công');
-			redirect('hangsx');
-		} else {
-			setErrorMessage('Xóa thất bại');
-			redirect('hangsx');
-		}
+
+	function getAllCamera(){
+		dd($_GET);
 	}
 
-	public function update()
-	{
-		$id_hangsx = $_GET['id_hangsx'];
-		$hangsx = $this->hangsxSql->getOneHangSX($id_hangsx);
-		viewAdmin('hangsx/update', ['hangsx' => $hangsx]);
+	function getOneLaptop(){
+		// dd($_GET);
+		$hangsxLaptop = $this->siteSql->hangsxSql->getHangSXLaptop();
+		$hangsxCamera = $this->siteSql->hangsxSql->getHangSXCamera();		
+
+		$url_laptop = $_GET["url_laptop"];
+		$laptop = $this->siteSql->getOneLaptopByUrl($url_laptop);
+		$remarkableLaptopList = $this->siteSql->getRemarkableLaptop(4);
+		$laptopWithHangSX = $this->siteSql->getLaptopWithHangSX($laptop->id_laptop, $laptop->hangsx_id, 4);
+
+		// dd($laptop);
+		viewSite('oneProduct', ['laptop' => $laptop, 'hangsxLaptop' => $hangsxLaptop, 'hangsxCamera' => $hangsxCamera, 'remarkableLaptopList' => $remarkableLaptopList, 'laptopWithHangSX' => $laptopWithHangSX]);
 	}
 
-	public function updatesave()
-	{
-		$id_hangsx = $_POST['txt_id_hangsx'];
-		$loaisp = $_POST['sl_loaisp'];
-		$tenhangsx = $_POST['txt_tenhangsx'];
-		if ($_FILES['file_anh']['name'] == '') {
-			$anh_hangsx = '';
-			$check = $this->hangsxSql->updateHangSX($id_hangsx, $loaisp, $tenhangsx, $anh_hangsx);
-		} else {
-			$anh_hangsx = 'assets/images/hangsx/'.$_FILES['file_anh']['name'];
-			$check = $this->hangsxSql->updateHangSX($id_hangsx, $loaisp, $tenhangsx, $anh_hangsx);
-		}
-		if ($check) {
-			move_uploaded_file($_FILES['file_anh']['tmp_name'], $anh_hangsx);
-			setSuccessMessage('Sửa thông tin thành công');
-			redirect('hangsx');		
-		} else {
-			setErrorMessage('Sửa thông tin thất bại');
-			redirect('hangsx');
-		}
+	function getOneCamera(){
+		// dd($_GET);
+		$hangsxLaptop = $this->siteSql->hangsxSql->getHangSXLaptop();
+		$hangsxCamera = $this->siteSql->hangsxSql->getHangSXCamera();		
+
+		$url_camera = $_GET["url_camera"];
+		$camera = $this->siteSql->getOneCameraByUrl($url_camera);
+		$remarkableCameraList = $this->siteSql->getRemarkableCamera(2);
+		$cameraWithHangSX = $this->siteSql->getCameraWithHangSX($camera->id_camera, $camera->hangsx_id, 2);
+
+		// dd($camera);
+		viewSite('oneProduct', ['camera' => $camera, 'hangsxLaptop' => $hangsxLaptop, 'hangsxCamera' => $hangsxCamera, 'remarkableCameraList' => $remarkableCameraList, 'cameraWithHangSX' => $cameraWithHangSX]);
 	}
 }
 

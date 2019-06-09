@@ -22,7 +22,16 @@ require_once 'controllers/NhanVienController.php';
 // require_once 'models/NhapHangSql.php';
 // require_once 'controllers/NhapHangController.php';
 
+
+require_once 'models/SiteSql.php';
+require_once 'controllers/SiteController.php';
+
+
 // require 'views/admin/layout/layout-demo.view.php';
+
+// require 'views/site/layout/layout.view.php';
+
+
 require_once 'routes.php';
 
 ?>

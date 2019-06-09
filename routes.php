@@ -2,10 +2,19 @@
 $controller = @$_GET['controller'];
 $action = @$_GET['action'];
 
-if (!$controller && !$action) {
+// if (!$controller) {
+// 	$controller = 'site';
+// }
+
+if ((!$controller && !$action) || ($controller == 'site' && !$action) ) {
 	$controller = 'site';
-	$action = 'trangchu';
-}else {
+	$action = 'home';
+} elseif ((!$controller && $action) || ($controller == 'site' && $action) ) {
+	$controller = 'site';
+	$action = $action;
+}
+
+else {
 	if ($controller != 'site') {
 		if (!isset($_SESSION['id_nhanvien'])) {
 			if ($controller == 'nhanvien' && $action == 'authenticate') {
@@ -32,7 +41,7 @@ if (!$controller && !$action) {
 // $action = @$_GET['action'];
 // if (!$action) {
 // 	if ($controller == 'site') {
-// 		$action = 'trangchu';
+// 		$action = 'home';
 // 	}
 // 	else {
 // 		$action = 'index';
@@ -63,6 +72,11 @@ switch ($controller) {
 	case 'nhanvien':
 		$nhanvienController = new NhanVienController();
 		$nhanvienController->$action();
+		break;
+
+	case 'site':
+		$siteController = new SiteController();
+		$siteController->$action();
 		break;
 
 	default:

@@ -1,0 +1,367 @@
+body{
+	margin: 0px;
+	padding: 0px;
+}
+
+.clear-fix:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+
+/*header*/
+
+.header{
+	width: 100%;
+}
+
+.header-logo{
+	float: left;
+	width: 20%;
+	background-color: green;
+}
+
+.header-slogan{
+	float: left;
+	width: 80%;
+	background-color: blue;
+}
+/*header*/
+
+
+/*nav*/
+.nav{
+	background-color: #33444e;
+}
+
+.nav-left{
+	float: left;
+	width: 20%;
+}
+
+.nav-main{
+	float: left;
+	width: 60%;
+}
+
+.nav-main ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  /*overflow: hidden;*/
+  /*background-color: #333;*/
+}
+
+.nav-main li {
+  	float: left;
+  	width: 25%;
+}
+
+.nav-main li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.nav-main li a:hover {
+  background-color: #111;
+}
+
+.nav-main li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #33444e;
+  min-width: 202px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  padding: 12px 16px;
+  display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+.nav-right{
+	float: left;
+	width: 20%;
+}
+/*nav*/
+
+
+
+/* content-home*/
+.content-left{
+	float: left;
+	width: 20%;
+	background-color: yellow;
+    margin: 60px 0px;
+    text-align: center;
+}
+
+.content-left h4{
+	margin: 5px;
+}
+
+.content-left img{
+	width: 80%;
+}
+
+.content-left p{
+    margin-bottom: 30px;
+    margin-top: 0;
+}
+
+.content-main{
+	float: left;
+	width: 80%;
+}
+
+
+.head-element{
+   	background-color: #ecf0f5;
+   	margin: 0;
+  	
+}
+
+.head-element-left{
+	float: left;
+	width: 80%;
+	font-size: 20px;
+  	padding: 20px;
+  	font-weight: bold;
+  	margin: 0;
+}
+
+.head-element-right{
+	float: right;
+	width: 15%;
+    padding-top: 25px;
+}
+
+.content-main hr{
+	margin: 0;
+}
+
+
+
+
+/*Phan danh cho hien thi danh sach dang luoi(grid)*/
+.content-main-element {
+    float: left;
+    width: 25%;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.content-main-element:hover{
+    background-color: #a1a4a9;
+}
+
+.main-element-image img{
+	width: 80%;
+}
+
+.main-element-description h3{
+	margin: 0;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+.main-element-description a{
+	text-decoration: none;
+	color: black;
+}
+
+.main-element-description p{
+	margin: 0;
+    padding: 2px 10px;
+    text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+/*Phan hien thi theo tung phan tu dang ngang*/
+/*.content-main-element {
+    padding: 10px 20px;	
+}
+
+.content-main-element:hover{
+    background-color: #ecf0f5;
+}
+
+
+
+.main-element-image{
+	float: left;
+	width: 20%;
+}
+
+.main-element-image img{
+	width: 100%;
+}
+
+.main-element-description{
+	float: left;
+	width: 80%;
+}
+
+.main-element-description h3{
+	margin: 0;
+    padding-bottom: 10px;
+}
+
+.main-element-description a{
+	text-decoration: none;
+	color: black;
+}
+
+.main-element-description p{
+	margin: 0;
+    padding: 2px 10px;
+}*/
+
+#home-giasp{
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+}
+/*content-home*/
+
+
+
+/*content-onelaptop*/
+.oneProduct-content-main{
+	float: left;
+	width: 60%;	
+	background-color: #ecf0f5;
+    min-height: 650px;
+
+}
+
+.oneProduct-content-main h2{
+	margin: 0;
+	padding: 20px;
+	text-align: center;
+}
+
+.oneProduct-img{
+	float: left;
+	width: 40%;
+	text-align: center;
+}
+
+.oneProduct-img img{
+	width: 80%;
+}
+
+.oneProduct-description{
+	float: left;
+	width: 60%;
+}
+
+#oneProduct-giasp{
+    font-size: 25px;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+
+#oneProduct-trangthai{
+	color: red;
+    margin: 0;
+}
+
+.oneProduct-detail img{
+	width: 100%;
+}
+
+/*content-onelaptop*/
+
+
+
+/*allProductWithOneType*/
+.allProductWithOneType-head-hangsx{
+	margin: 0;
+	padding: 10px;
+}
+
+.allProductWithOneType-head-hangsx-element{
+	float: left;
+	width: 10%;
+	text-align: center;
+}
+
+.allProductWithOneType-head-hangsx-element p{
+	margin: 0;
+	font-weight: bold;
+    padding-top: 10px;
+}
+
+.allProductWithOneType-content-left{
+	float: left;
+	width: 20%;
+	background-color: #ecf0f5;
+    /*text-align: center;*/
+}
+
+.allProductWithOneType-content-left h4{
+    margin: 18px 0 18px 25px;
+}
+
+.allProductWithOneType-content-left hr{
+	margin: 0;
+}
+
+#allProductWithOneType-content-left-p-head{
+    margin: 10px 25px;
+}
+
+.allProductWithOneType-content-left-element{
+	float: left;
+	width: 50%;
+}
+
+.allProductWithOneType-content-left-element p{
+    margin: 5px 10px;
+}
+/*allProductWithOneType*/
+
+
+
+
+
+
+
+.footer{
+	background-color: black;
+	color: white;
+}
+
+.footer p{
+	margin: 0;
+	padding: 10px;
+	text-align: center;
+}

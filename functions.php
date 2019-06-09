@@ -49,6 +49,21 @@ function viewAdmin($viewName, $data = ''){
 	}	
 }
 
+function viewSiteLayout($viewName)
+{
+	require "views/site/layout/$viewName.view.php";
+}
+
+function viewSite($viewName, $data = '')
+{
+	if ($data) {
+		extract($data);
+		require "views/site/$viewName.view.php";
+	} else {
+		require "views/site/$viewName.view.php";
+	}
+}
+
 function redirect($controller, $action = ''){
 	if (!$action) {
 		header("location:?controller=$controller");

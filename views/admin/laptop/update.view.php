@@ -7,6 +7,9 @@ viewAdminLayout('head');
 ?>
 
 <h2>Sửa thông tin sản phẩm Laptop</h2>
+<?php viewAdminLayout('message'); ?>
+<p style="text-align: center; color: red">Các trường có dấu * bắt buộc phải nhập</p>
+
 <form action="?controller=laptop&action=updatesave" method="post" enctype="multipart/form-data">
 	<table border="1px" cellpadding="5px">
 		<input type="hidden" name="txt_id_laptop" value="<?= $laptop->id_laptop?>">
@@ -21,43 +24,43 @@ viewAdminLayout('head');
 			</td>
 		</tr>
 		<tr>
-			<th>Tên Laptop:</th>
+			<th>Tên Laptop(*):</th>
 			<td>
 				<input type="text" name="txt_ten_laptop" value="<?= $laptop->ten_laptop?> ">
 			</td>
 		</tr>
 		<tr>
-			<th>Giá bán:</th>
+			<th>Giá bán(*):</th>
 			<td>
 				<input type="text" name="txt_gia_laptop" placeholder="VNĐ" value="<?= $laptop->gia_laptop?> ">
 			</td>
 		</tr>
 		<tr>
-			<th>Màn hình:</th>
+			<th>Màn hình(*):</th>
 			<td>
 				<input type="text" name="txt_manhinh" placeholder="inch" value="<?= $laptop->manhinh?> ">
 			</td>
 		</tr>
 		<tr>
-			<th>CPU:</th>
+			<th>CPU(*):</th>
 			<td>
 				<input type="text" name="txt_cpu" value="<?= $laptop->cpu?> ">
 			</td>
 		</tr>
 		<tr>
-			<th>RAM:</th>
+			<th>RAM(*):</th>
 			<td>
 				<input type="text" name="txt_ram" placeholder="GB" value="<?= $laptop->ram?> ">
 			</td>
 		</tr>
 		<tr>
-			<th>Ổ cứng:</th>
+			<th>Ổ cứng(*):</th>
 			<td>
 				<input type="text" name="txt_ocung" placeholder="GB" value="<?= $laptop->ocung?> ">
 			</td>
 		</tr>
 		<tr>
-			<th>VGA:</th>
+			<th>VGA(*):</th>
 			<td>
 				<input type="text" name="txt_vga" value="<?= $laptop->vga?> ">
 			</td>
@@ -87,9 +90,9 @@ viewAdminLayout('head');
 			</td>
 		</tr>
 		<tr>
-			<th>Url:</th>
+			<th>Url(*):</th>
 			<td>
-				<input type="text" name="txt_url" value="<?= $laptop->url_laptop?> ">
+				<input type="text" name="txt_url" value="<?= $laptop->url_laptop?>">
 			</td>
 		</tr>
 		<tr>

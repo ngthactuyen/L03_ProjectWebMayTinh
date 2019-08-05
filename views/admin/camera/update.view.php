@@ -3,9 +3,12 @@
 // dd($hangsxList);
 viewAdminLayout('head');
 ?>
+<script type="text/javascript" src="assets/js/admin/validateCamera.js"></script>
 
 <h2>Sửa thông tin sản phẩm Camera</h2>
-<form action="?controller=camera&action=updatesave" method="post" enctype="multipart/form-data">
+<?php viewAdminLayout('message'); ?>
+<p style="text-align: center; color: red">Các trường có dấu * bắt buộc phải nhập</p>
+<form action="?controller=camera&action=updatesave" method="post" enctype="multipart/form-data" name="formCamera" onsubmit="return validate()">
 	<table border="1px" cellpadding="5px">
 		<input type="hidden" name="txt_id_camera" value="<?= $camera->id_camera?>">
 		<tr>
@@ -19,37 +22,37 @@ viewAdminLayout('head');
 			</td>
 		</tr>
 		<tr>
-			<th>Tên Camera:</th>
+			<th>Tên Camera(*):</th>
 			<td>
 				<input type="text" name="txt_ten_camera" value="<?=$camera->ten_camera?>">
 			</td>
 		</tr>
 		<tr>
-			<th>Giá bán:</th>
+			<th>Giá bán(*):</th>
 			<td>
 				<input type="text" name="txt_gia_camera" placeholder="VNĐ" value="<?=$camera->gia_camera?>">
 			</td>
 		</tr>
 		<tr>
-			<th>Độ phân giải:</th>
+			<th>Độ phân giải(*):</th>
 			<td>
 				<input type="text" name="txt_dophangiai" placeholder="Megapixel" value="<?=$camera->dophangiai?>">
 			</td>
 		</tr>
 		<tr>
-			<th>Ống kính:</th>
+			<th>Ống kính(*):</th>
 			<td>
 				<input type="text" name="txt_ongkinh" placeholder="mm" value="<?=$camera->ongkinh?>">
 			</td>
 		</tr>
 		<tr>
-			<th>Bán kính hồng ngoại:</th>
+			<th>Bán kính hồng ngoại(*):</th>
 			<td>
 				<input type="text" name="txt_bankinhhongngoai" placeholder="m" value="<?=$camera->bankinhhongngoai?>">
 			</td>
 		</tr>
 		<tr>
-			<th>Url:</th>
+			<th>Url(*):</th>
 			<td>
 				<input type="text" name="txt_url" value="<?=$camera->url_camera?>">
 			</td>

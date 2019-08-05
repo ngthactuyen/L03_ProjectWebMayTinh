@@ -12,11 +12,18 @@
 </head>
 <body>
 	<div class="header clear-fix">
+		<!-- <p>logo</p> -->
 		<div class="header-logo">
-			<p>Logo cửa hàng</p>
+			<a href="?action=home">
+				<img src="assets/images/site/logo.png">
+			</a>
 		</div>
 		<div class="header-slogan">
-			<p>Slogan cửa hàng</p>
+			<!-- <p>Slogan cửa hàng</p> -->
+			<h3>Công Ty Cổ Phần Bán Lẻ Kỹ Thuật Số KMA Shop</h3>
+			<p>
+				Chuyên cung cấp các sản phẩm Laptop - Camera chính hãng - chất lượng - giá tốt
+			</p>
 		</div>
 	</div>
 	<div class="nav clear-fix">
@@ -32,7 +39,7 @@
 					<a href="?action=getAllLaptop">Laptop</a>
 					<div class="dropdown-content">
 						<?php foreach ($hangsxLaptop as $key => $value): ?>
-							<a href="?action=getAllLaptop&id_hangsx=<?= $value->id_hangsx?>"><?= $value->tenhangsx?></a>
+							<a href="?action=getAllLaptop&hangsx_id[0]=<?= $value->id_hangsx?>"><?= $value->tenhangsx?></a>
 						<?php endforeach ?>
 					</div>
 				</li>
@@ -40,12 +47,12 @@
 					<a href="?action=getAllCamera">Camera</a>
 					<div class="dropdown-content">
 						<?php foreach ($hangsxCamera as $key => $value): ?>
-							<a href="?action=getAllCamera&id_hangsx=<?= $value->id_hangsx?>"><?= $value->tenhangsx?></a>
+							<a href="?action=getAllCamera&hangsx_id[0]=<?= $value->id_hangsx?>"><?= $value->tenhangsx?></a>
 						<?php endforeach ?>
 					</div>
 				</li>
 				<li>
-					<a href="">Liên hệ</a>
+					<a href="#lienhe">Liên hệ</a>
 				</li>
 				
 			</ul>

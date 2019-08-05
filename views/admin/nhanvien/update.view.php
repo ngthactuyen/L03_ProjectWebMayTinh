@@ -2,9 +2,9 @@
 // dd($nhanvien);	
 viewAdminLayout('head');
 ?>
-
+<script type="text/javascript" src="assets/js/admin/validateNhanVien.js"></script>
 <h2>Sửa thông tin Hãng sản xuất</h2>
-<form action="?controller=nhanvien&action=updatesave" method="post" enctype="multipart/form-data">
+<form action="?controller=nhanvien&action=updatesave" method="post" enctype="multipart/form-data" name="formNhanVien" onsubmit="return validate()">
 	<input type="hidden" name="txt_id_nhanvien" value="<?= $nhanvien->id_nhanvien ?>">
 	<table border="1px" cellpadding="5px">
 		<tr>

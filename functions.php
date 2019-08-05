@@ -1,4 +1,13 @@
 <?php
+function __autoload($className){
+	if (file_exists('models/' . $className . '.php')){
+		include_once 'models/' . $className . '.php';
+	}
+	if (file_exists('controllers/' . $className . '.php')){
+		include_once 'controllers/' . $className . '.php';
+	}
+}
+
 function connect(){
 	$connection = mysqli_connect(
 		'localhost',

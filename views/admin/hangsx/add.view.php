@@ -1,12 +1,14 @@
 <?php
 viewAdminLayout('head');
 ?>
+<script type="text/javascript" src="assets/js/admin/validateHangSX.js"></script>
+
 <h2>Thêm mới Hãng sản xuất</h2>
-<form action="?controller=hangsx&action=addsave" method="post" enctype="multipart/form-data">
+<form action="?controller=hangsx&action=addsave" method="post" enctype="multipart/form-data" name="formHangSX" onsubmit="return validate()">
 	<table border="1px" cellpadding="5px">
 		<tr>
 			<th>Loại sản phẩm: </th>
-			<td>
+			<td id="td-select">
 				<select name="sl_loaisp">
 					<option value="1">Laptop</option>
 					<option value="2">Camera</option>

@@ -33,6 +33,9 @@ viewSite('layout/head', ['hangsxLaptop' => $hangsxLaptop, 'hangsxCamera' => $han
 	</div>
 
 	<div class="content-main">
+
+		<?php viewSiteLayout('slideshow');?>
+
 		<div class="head-element clear-fix">
 			<div class="head-element-left">
 				Các sản phẩm Laptop	
@@ -65,8 +68,12 @@ viewSite('layout/head', ['hangsxLaptop' => $hangsxLaptop, 'hangsxCamera' => $han
 					<p>- Ram: <?= $value->ram?></p>
 					<p>- Ổ cứng: <?= $value->ocung?></p>
 					<p>- VGA: <?= $value->vga?></p>
-					<p>- <?= ($value->soluong == 0) ? 'Tạm hết hàng': 'Còn hàng' ?></p>
-					<p id="home-giasp">Giá: <?= number_format($value->gia_laptop)?> VNĐ</p>
+					<p>- Kích thước: <?= $value->kichthuoc?></p>
+					<p>- Khối lượng: <?= $value->khoiluong?> kg</p>
+					<!-- <p>- <?= ($value->soluong == 0) ? 'Tạm hết hàng': 'Còn hàng' ?></p> -->
+					<p id="home-giasp">
+						Giá: <?= ($value->gia_laptop != 0) ? number_format($value->gia_laptop).'VNĐ' : 'Liên hệ'?>
+					</p>
 				</div>
 			</div>
 
@@ -87,15 +94,15 @@ viewSite('layout/head', ['hangsxLaptop' => $hangsxLaptop, 'hangsxCamera' => $han
 			</div>
 		</div>
 
-		<?php $i = 0;?>
-		<?php foreach ($cameraList as $key => $value): ?>
-		<?php
+		<?php 
+			$i = 0;
+			foreach ($cameraList as $key => $value): 
 			$i++;
 			if ($i % 4 == 1) {
 				echo '<hr><div class="content-main-row-element clear-fix">';
 			}
 		?>
-			<div class="content-main-element clear-fix">
+			<div class="content-main-element-camera clear-fix">
 				<div class="main-element-image">
 					<a href="?action=getOneCamera&url_camera=<?= $value->url_camera?>">
 						<img src="<?= $value->anh_camera?>">
@@ -108,13 +115,15 @@ viewSite('layout/head', ['hangsxLaptop' => $hangsxLaptop, 'hangsxCamera' => $han
 					<p>- Độ phân giải: <?= $value->dophangiai?> MP</p>
 					<p>- Ống kính: <?= $value->ongkinh?> mm</p>
 					<p>- Bán kính hồng ngoại: <?= $value->bankinhhongngoai?> m</p>
-					<p>- <?= ($value->soluong == 0) ? 'Tạm hết hàng': 'Còn hàng' ?></p>
-					<p id="home-giasp">Giá: <?= number_format($value->gia_camera)?> VNĐ</p>
+					<!-- <p>- <?= ($value->soluong == 0) ? 'Tạm hết hàng': 'Còn hàng' ?></p> -->
+					<p id="home-giasp">
+						Giá: <?= ($value->gia_camera != 0) ? number_format($value->gia_camera).' VNĐ': 'Liên hệ' ?>
+					</p>
 				</div>
 			</div>
 
 		<?php
-			if ($i % 4 == 0 || $i == count($laptopList)) {
+			if ($i % 4 == 0 || $i == count($cameraList)) {
 				echo '</div>';
 			}
 		?>

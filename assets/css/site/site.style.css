@@ -18,13 +18,31 @@ body{
 .header-logo{
 	float: left;
 	width: 20%;
-	background-color: green;
+  text-align: center;
+	/*background-color: green;*/
+}
+
+.header-logo img{
+    width: 90%;
+    height: 120px;
+    padding: 10px;
 }
 
 .header-slogan{
-	float: left;
-	width: 80%;
-	background-color: blue;
+  	float: left;
+  	width: 80%;
+  	background-color: #ecf0f5;
+    text-align: center;
+    font-size: 25px;
+    color: blue;
+}
+
+.header-slogan h3{
+    margin: 25px;
+}
+
+.header-slogan p{
+    margin: 15px;
 }
 /*header*/
 
@@ -166,14 +184,30 @@ body{
     width: 25%;
     text-align: center;
     padding-top: 20px;
+    min-height: 550px;
+
 }
 
 .content-main-element:hover{
     background-color: #a1a4a9;
 }
 
+.content-main-element-camera{
+    float: left;
+    width: 25%;
+    text-align: center;
+    padding-top: 20px;
+    min-height: 400px;
+}
+
+.content-main-element-camera:hover{
+    background-color: #a1a4a9;
+}
+
 .main-element-image img{
-	width: 80%;
+	/*width: 80%;*/
+    height: 150px;
+
 }
 
 .main-element-description h3{
@@ -314,10 +348,8 @@ body{
 	text-align: center;
 }
 
-.allProductWithOneType-head-hangsx-element p{
-	margin: 0;
-	font-weight: bold;
-    padding-top: 10px;
+.allProductWithOneType-head-hangsx-element img{
+    height: 30px;
 }
 
 .allProductWithOneType-content-left{
@@ -347,21 +379,45 @@ body{
 .allProductWithOneType-content-left-element p{
     margin: 5px 10px;
 }
+
+.allProductWithOneType-content-left button{
+    background-color: #0f5075;
+    border-color: #367fa9;
+    border: none;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#button-center{
+	text-align: center;
+	margin: 10px;
+}
 /*allProductWithOneType*/
 
 
 
 
 
-
-
 .footer{
-	background-color: black;
-	color: white;
+  	background-color: black;
+  	color: white;
+    padding: 0 20%;
+
+}
+
+.footer h3{
+    margin: 0;
+    padding: 10px 0;
 }
 
 .footer p{
-	margin: 0;
-	padding: 10px;
-	text-align: center;
+    margin: 0;
+    padding: 10px 0;
 }

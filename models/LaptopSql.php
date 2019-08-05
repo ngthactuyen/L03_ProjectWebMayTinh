@@ -22,6 +22,18 @@ class LaptopSql
 		return $laptop = new Laptop($temp);
 	}
 
+	function getOneLaptopByIdOrUrl($id_laptop, $url_laptop){
+		$sql = "select * from tbl_laptop where id_laptop like '$id_laptop' or url_laptop like '$url_laptop' ";
+		$laptopList = getAllData($sql);
+		// dd($laptopList);
+		$laptopObject = [];
+		foreach ($laptopList as $laptop) {
+			$laptopObject[] = new Laptop($laptop);
+		}
+		// dd($laptopObject);
+		return $laptopObject;
+	}
+
 	function insertLaptop($id_laptop, $hangsx_id, $ten_laptop, $gia_laptop, $manhinh, $cpu, $ram, $ocung, $vga, $hdh, $kichthuoc, $khoiluong, $pin, $url_laptop, 
 		$anh_laptop, $nhucau, $mota)
 	{

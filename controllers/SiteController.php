@@ -15,8 +15,8 @@ class SiteController{
 		$hangsxCamera = $this->siteSql->hangsxSql->getHangSXCamera();
 		$laptopList = $this->siteSql->getAllLaptopHome(8);
 		$cameraList = $this->siteSql->getAllCameraHome(8);
-		$remarkableLaptopList = $this->siteSql->getRemarkableLaptop(2);
-		$remarkableCameraList = $this->siteSql->getRemarkableCamera(2);
+		$remarkableLaptopList = $this->siteSql->getRemarkableLaptop(3);
+		$remarkableCameraList = $this->siteSql->getRemarkableCamera(3);
 
 
 
@@ -50,7 +50,11 @@ class SiteController{
 
 
 	function getAllCamera(){
-		dd($_GET);
+		$hangsxLaptop = $this->siteSql->hangsxSql->getHangSXLaptop();
+		$hangsxCamera = $this->siteSql->hangsxSql->getHangSXCamera();
+		$cameraList = $this->siteSql->getAllCamera();
+
+		viewSite('allProductWithOneType', ['hangsxLaptop' => $hangsxLaptop, 'hangsxCamera' => $hangsxCamera, 'type' => 'camera', 'cameraList' => $cameraList]);
 	}
 
 	function getOneLaptop(){

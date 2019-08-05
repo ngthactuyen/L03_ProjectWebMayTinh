@@ -1,8 +1,9 @@
 <?php
 viewAdminLayout('head');
 ?>
+<script type="text/javascript" src="assets/js/admin/validateNhanVien.js"></script>
 <h2>Thêm mới Nhân viên</h2>
-<form action="?controller=nhanvien&action=addsave" method="post">
+<form action="?controller=nhanvien&action=addsave" method="post" name="formNhanVien" onsubmit="return validate()">
 	<table border="1px" cellpadding="5px">
 		<tr>
 			<th>Họ tên: </th>

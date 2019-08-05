@@ -28,7 +28,7 @@ viewAdminLayout('head');
 		<th>Url</th>
 		<th>Ảnh</th>
 		<th>Mô tả</th>
-		<th>Số lượng</th>
+		<!-- <th>Số lượng</th> -->
 		<th>Thao tác</th>
 	</tr>
 	<?php foreach ($cameraList as $key => $value): ?>
@@ -44,7 +44,7 @@ viewAdminLayout('head');
 			<img src="<?= $value->anh_camera?>">
 		</td>
 		<td><?= $value->mota?></td>
-		<td><?= $value->soluong?></td>
+		<!-- <td><?= $value->soluong?></td> -->
 		<td>
 			<button class="btn-add">
 				<a href="?controller=camera&action=update&id_camera=<?= $value->id_camera ?>">Sửa</a>

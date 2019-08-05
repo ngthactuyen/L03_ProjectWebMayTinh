@@ -22,6 +22,18 @@ class CameraSql
 		return $camera = new Camera($temp);
 	}
 
+	function getOneCameraByIdOrUrl($id_camera, $url_camera){
+		$sql = "select * from tbl_camera where id_camera like '$id_camera' or url_camera like '$url_camera' ";
+		$cameraList = getAllData($sql);
+		// dd($cameraList);
+		$cameraObject = [];
+		foreach ($cameraList as $camera) {
+			$cameraObject[] = new Camera($camera);
+		}
+		// dd($cameraObject);
+		return $cameraObject;
+	}
+
 	function insertCamera($id_camera, $hangsx_id, $ten_camera, $gia_camera, $dophangiai, $ongkinh, $bankinhhongngoai, $url_camera, $anh_camera, $mota)
 	{
 		$sql = "insert into tbl_camera(id_camera, hangsx_id, ten_camera, gia_camera, dophangiai, ongkinh, bankinhhongngoai, url_camera, anh_camera, mota) value ('$id_camera', $hangsx_id, '$ten_camera', $gia_camera, $dophangiai, $ongkinh, $bankinhhongngoai, '$url_camera', '$anh_camera', '$mota')";

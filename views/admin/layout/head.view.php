@@ -22,7 +22,6 @@
 						echo '<a href="?controller=nhanvien">Quản lý Nhân viên</a>';
 					}
 				?>
-				<a href="?controller=nhaphang">Quản lý Nhập hàng</a>
 
 			</div>
 		</div>

@@ -27,7 +27,7 @@ viewAdminLayout('head');
 		<th>Url</th>
 		<th>Ảnh</th>
 		<th>Nhu cầu</th>
-		<th>Số lượng</th>
+		<!-- <th>Số lượng</th> -->
 		<th>Thao tác</th>
 	</tr>
 	<?php foreach ($laptopList as $key => $value): ?>
@@ -59,7 +59,7 @@ viewAdminLayout('head');
 					
 		?>
 		</td>
-		<td><?= $value->soluong?></td>
+		<!-- <td><?= $value->soluong?></td> -->
 		<td>
 			<button class="btn-add">
 				<a href="?controller=laptop&action=update&id_laptop=<?= $value->id_laptop ?>">Sửa</a>

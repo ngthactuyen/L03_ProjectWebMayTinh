@@ -40,16 +40,38 @@ class CameraController{
 		$anh_camera = 'assets/images/camera/'.$_FILES['file_anh']['name'];
 		$mota = $_POST['txt_mota'];
 
-		$check = $this->cameraSql->insertCamera($id_camera, $hangsx_id, $ten_camera, $gia_camera, $dophangiai, $ongkinh, $bankinhhongngoai, $url_camera, $anh_camera, $mota);
-		// dd($check);
-		if ($check) {
-			move_uploaded_file($_FILES['file_anh']['tmp_name'], $anh_camera);
-			setSuccessMessage('Thêm mới thành công');
-			redirect('camera');
+		$checkExistCamera = $this->cameraSql->getOneCameraByIdOrUrl($id_camera, $url_camera);
+		if (count($checkExistCamera) == 0) {
+			$check = $this->cameraSql->insertCamera($id_camera, $hangsx_id, $ten_camera, $gia_camera, $dophangiai, $ongkinh, $bankinhhongngoai, $url_camera, $anh_camera, $mota);
+			// dd($check);
+			if ($check) {
+				move_uploaded_file($_FILES['file_anh']['tmp_name'], $anh_camera);
+				setSuccessMessage('Thêm mới thành công');
+				redirect('camera');
+			} else {
+				setErrorMessage('Thêm mới thất bại');
+				redirect('camera');
+			}
 		} else {
-			setErrorMessage('Thêm mới thất bại');
-			redirect('camera');
+			setErrorMessage('Id Camera hoặc url bạn nhập đã bị trùng, hãy nhập lại');
+			$hangsxSql = new hangsxSql();
+			$hangsxList = $hangsxSql->getHangSXCamera();
+			viewAdmin('camera/add', [
+				'hangsxList' => $hangsxList,
+				'id_camera' => $_POST['txt_id_camera'],
+				'hangsx_id' => $_POST['sl_hangsx_id'],
+				'ten_camera' => $_POST['txt_ten_camera'],
+				'gia_camera' => $_POST['txt_gia_camera'],
+				'dophangiai' => $_POST['txt_dophangiai'],
+				'ongkinh' => $_POST['txt_ongkinh'],
+				'bankinhhongngoai' => $_POST['txt_bankinhhongngoai'],
+				'url_camera' => $_POST['txt_url'],
+				'anh_camera' => 'assets/images/camera/'.$_FILES['file_anh']['name'],
+				'mota' => $_POST['txt_mota']
+			]);
 		}
+
+			
 	}
 
 	public function delete()	
@@ -89,21 +111,47 @@ class CameraController{
 		$anh_camera = 'assets/images/camera/'.$_FILES['file_anh']['name'];
 		$mota = $_POST['txt_mota'];
 
-		if ($_FILES['file_anh']['name'] == '') {
-			$anh_camera = '';
-		} else {
-			$anh_camera = 'assets/images/camera/'.$_FILES['file_anh']['name'];
+		$siteSql = new SiteSql();
+		$checkExistCamera = $siteSql->getOneCameraByUrl($url_camera);
+		// dd($checkExistCamera);
+		if (is_null($checkExistCamera->id_camera) || $checkExistCamera->id_camera == $id_camera)
+		{
+			if ($_FILES['file_anh']['name'] == '') {
+				$anh_camera = '';
+			} else {
+				$anh_camera = 'assets/images/camera/'.$_FILES['file_anh']['name'];
+			}
+			
+			$check = $this->cameraSql->updateCamera($id_camera, $hangsx_id, $ten_camera, $gia_camera, $dophangiai, $ongkinh, $bankinhhongngoai, $url_camera, $anh_camera, $mota);
+			// die($check);
+			if ($check) {
+				move_uploaded_file($_FILES['file_anh']['tmp_name'], $anh_camera);
+				setSuccessMessage('Sửa thông tin thành công');
+				redirect('camera');		
+			} else {
+				setErrorMessage('Sửa thông tin thất bại');
+				redirect('camera');
+			}
 		}
-		
-		$check = $this->cameraSql->updateCamera($id_camera, $hangsx_id, $ten_camera, $gia_camera, $dophangiai, $ongkinh, $bankinhhongngoai, $url_camera, $anh_camera, $mota);
-		// die($check);
-		if ($check) {
-			move_uploaded_file($_FILES['file_anh']['tmp_name'], $anh_camera);
-			setSuccessMessage('Sửa thông tin thành công');
-			redirect('camera');		
-		} else {
-			setErrorMessage('Sửa thông tin thất bại');
-			redirect('camera');
+		if (!is_null($checkExistCamera->id_camera) && $checkExistCamera->id_camera != $id_camera)
+		{
+			setErrorMessage('Url bạn nhập đã bị trùng, hãy nhập lại');
+			$hangsxSql = new hangsxSql();
+			$hangsxList = $hangsxSql->getHangSXLaptop();
+			$camera = new Camera([
+				'id_camera' => $_POST['txt_id_camera'],
+				'hangsx_id' => $_POST['sl_hangsx_id'],
+				'ten_camera' => $_POST['txt_ten_camera'],
+				'gia_camera' => $_POST['txt_gia_camera'],
+				'dophangiai' => $_POST['txt_dophangiai'],
+				'ongkinh' => $_POST['txt_ongkinh'],
+				'bankinhhongngoai' => $_POST['txt_bankinhhongngoai'],
+				'url_camera' => $_POST['txt_url'],
+				'anh_camera' => 'assets/images/camera/'.$_FILES['file_anh']['name'],
+				'mota' => $_POST['txt_mota'],
+				'soluong' => 0
+			]);
+			viewAdmin('camera/update', ['camera' => $camera, 'hangsxList' => $hangsxList]);
 		}
 	}
 }

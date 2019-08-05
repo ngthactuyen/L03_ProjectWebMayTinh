@@ -56,6 +56,8 @@ viewSiteLayout('head');
 			<p>Ram: <?= $value->ram?></p>
 			<p>Ổ cứng: <?= $value->ocung?></p>
 			<p>VGA: <?= $value->vga?></p>
+			<p>- Kích thước: <?= $value->kichthuoc?></p>
+			<p>- Khối lượng: <?= $value->khoiluong?> kg</p>
 			<p><?= ($value->soluong == 0) ? 'Tạm hết hàng': 'Còn hàng' ?></p>
 			<p id="home-giasp">Giá: <?= number_format($value->gia_laptop)?> VNĐ</p>
 		</div>

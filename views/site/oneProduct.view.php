@@ -46,7 +46,7 @@ viewSite('layout/head', ['hangsxLaptop' => $hangsxLaptop, 'hangsxCamera' => $han
 				</div>
 				<div class="oneProduct-description">
 					<p id="oneProduct-giasp">Giá: <?= number_format($laptop->gia_laptop)?> VNĐ</p>
-					<p id="oneProduct-trangthai">Trạng thái: <?= ($laptop->soluong == 0) ? 'Tạm hết hàng': 'Còn hàng'?></p>
+					<!-- <p id="oneProduct-trangthai">Trạng thái: <?= ($laptop->soluong == 0) ? 'Tạm hết hàng': 'Còn hàng'?></p> -->
 					<h3>Thông số kỹ thuật:</h3>
 					<p>- CPU: <?= $laptop->cpu?></p>
 					<p>- Ram: <?= $laptop->ram?></p>
@@ -75,7 +75,7 @@ viewSite('layout/head', ['hangsxLaptop' => $hangsxLaptop, 'hangsxCamera' => $han
 				</div>
 				<div class="oneProduct-description">
 					<p id="oneProduct-giasp">Giá: <?= number_format($camera->gia_camera)?> VNĐ</p>
-					<p id="oneProduct-trangthai">Trạng thái: <?= ($camera->soluong == 0) ? 'Tạm hết hàng': 'Còn hàng'?></p>
+					<!-- <p id="oneProduct-trangthai">Trạng thái: <?= ($camera->soluong == 0) ? 'Tạm hết hàng': 'Còn hàng'?></p> -->
 					<h3>Mô tả sản phẩm:</h3>
 					<?= $camera->mota?>
 				</div>
